@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE527D5B1E8DECDB00CF8107 /* FinalProjectDatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */; };
 		AE527D5F1E8DED0700CF8107 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */; };
 		AE527D601E8DED0700CF8107 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */; };
+		AE527D621E8E998700CF8107 /* FinalProjectDatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = AE527D611E8E998700CF8107 /* FinalProjectDatabase.db */; };
 		F6139A521E8DEAC90009A0CF /* NewUser2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6139A511E8DEAC90009A0CF /* NewUser2ViewController.m */; };
 		F65B5DE11E7B7BD100E0F83A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE01E7B7BD100E0F83A /* main.m */; };
 		F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE31E7B7BD100E0F83A /* AppDelegate.m */; };
@@ -26,9 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = FinalProjectDatabase.db; path = ../../../../../FinalProjectDatabase.db; sourceTree = "<group>"; };
 		AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		AE527D611E8E998700CF8107 /* FinalProjectDatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinalProjectDatabase.db; sourceTree = "<group>"; };
 		F6139A501E8DEAC90009A0CF /* NewUser2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUser2ViewController.h; sourceTree = "<group>"; };
 		F6139A511E8DEAC90009A0CF /* NewUser2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUser2ViewController.m; sourceTree = "<group>"; };
 		F65B5DDC1E7B7BD100E0F83A /* OnTheSpotRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheSpotRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +70,7 @@
 		AE527D591E8DECC500CF8107 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */,
+				AE527D611E8E998700CF8107 /* FinalProjectDatabase.db */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -278,7 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65B5DEF1E7B7BD100E0F83A /* LaunchScreen.storyboard in Resources */,
-				AE527D5B1E8DECDB00CF8107 /* FinalProjectDatabase.db in Resources */,
+				AE527D621E8E998700CF8107 /* FinalProjectDatabase.db in Resources */,
 				F65B5DFB1E7B7F3800E0F83A /* car_intro.png in Resources */,
 				F65B5DEC1E7B7BD100E0F83A /* Assets.xcassets in Resources */,
 				F65B5DEA1E7B7BD100E0F83A /* Main.storyboard in Resources */,
