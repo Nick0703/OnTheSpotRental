@@ -45,7 +45,7 @@
         char *sqlStatement = "select * from entries;";
         sqlite3_stmt *compiledStatement;
         
-        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK);
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
         {
             while(sqlite3_step(compiledStatement) == SQLITE_ROW)
             {
