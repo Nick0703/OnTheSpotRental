@@ -13,6 +13,7 @@
 @end
 
 @implementation ReturnUserViewController
+@synthesize txtUsername, txtPassword;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

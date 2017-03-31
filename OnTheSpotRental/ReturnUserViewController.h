@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReturnUserViewController : UIViewController
+@interface ReturnUserViewController : UIViewController {
+    IBOutlet UITextField *txtUsername;
+    IBOutlet UITextField *txtPassword;
+}
+
+@property(strong, nonatomic) IBOutlet UITextField *txtUsername;
+@property(strong, nonatomic) IBOutlet UITextField *txtPassword;
 
 @end
