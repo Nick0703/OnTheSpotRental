@@ -1,22 +1,18 @@
 //
-//  NewUserViewController.m
+//  NewUser2ViewController.m
 //  OnTheSpotRental
 //
-//  Created by Lokesh Chamane on 2017-03-17.
+//  Created by Lokesh Chamane on 2017-03-30.
 //  Copyright © 2017 Lokesh Chamane. All rights reserved.
 //
 
-#import "NewUserViewController.h"
+#import "NewUser2ViewController.h"
 
-@interface NewUserViewController ()
+@interface NewUser2ViewController ()
 
 @end
 
-@implementation NewUserViewController
-
-- (IBAction)unwindToThisViewController2:(UIStoryboardSegue *)sender {
-    
-}
+@implementation NewUser2ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

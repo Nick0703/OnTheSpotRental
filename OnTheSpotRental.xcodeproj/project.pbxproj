@@ -10,6 +10,7 @@
 		AE527D5B1E8DECDB00CF8107 /* FinalProjectDatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */; };
 		AE527D5F1E8DED0700CF8107 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */; };
 		AE527D601E8DED0700CF8107 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */; };
+		F6139A521E8DEAC90009A0CF /* NewUser2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6139A511E8DEAC90009A0CF /* NewUser2ViewController.m */; };
 		F65B5DE11E7B7BD100E0F83A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE01E7B7BD100E0F83A /* main.m */; };
 		F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE31E7B7BD100E0F83A /* AppDelegate.m */; };
 		F65B5DE71E7B7BD100E0F83A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE61E7B7BD100E0F83A /* ViewController.m */; };
@@ -28,6 +29,8 @@
 		AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = FinalProjectDatabase.db; path = ../../../../../FinalProjectDatabase.db; sourceTree = "<group>"; };
 		AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F6139A501E8DEAC90009A0CF /* NewUser2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUser2ViewController.h; sourceTree = "<group>"; };
+		F6139A511E8DEAC90009A0CF /* NewUser2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUser2ViewController.m; sourceTree = "<group>"; };
 		F65B5DDC1E7B7BD100E0F83A /* OnTheSpotRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheSpotRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65B5DE01E7B7BD100E0F83A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F65B5DE21E7B7BD100E0F83A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +84,64 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F6139A531E8DF17A0009A0CF /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				F65B5DFC1E7B9F1900E0F83A /* NewUserViewController.h */,
+				F65B5DFD1E7B9F1900E0F83A /* NewUserViewController.m */,
+				F6139A501E8DEAC90009A0CF /* NewUser2ViewController.h */,
+				F6139A511E8DEAC90009A0CF /* NewUser2ViewController.m */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
+		F6139A551E8DF19D0009A0CF /* Registered User */ = {
+			isa = PBXGroup;
+			children = (
+				F65B5DFF1E7B9F4700E0F83A /* ReturnUserViewController.h */,
+				F65B5E001E7B9F4700E0F83A /* ReturnUserViewController.m */,
+			);
+			name = "Registered User";
+			sourceTree = "<group>";
+		};
+		F6139A561E8DF1BE0009A0CF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F65B5DE51E7B7BD100E0F83A /* ViewController.h */,
+				F65B5DE61E7B7BD100E0F83A /* ViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		F6139A571E8DF1D10009A0CF /* Rental Screen */ = {
+			isa = PBXGroup;
+			children = (
+				F6139A591E8DF1F20009A0CF /* New Rental */,
+				F6139A581E8DF1E00009A0CF /* Current Rental */,
+				F65B5E051E7B9FA800E0F83A /* RentalsViewController.h */,
+				F65B5E061E7B9FA800E0F83A /* RentalsViewController.m */,
+			);
+			name = "Rental Screen";
+			sourceTree = "<group>";
+		};
+		F6139A581E8DF1E00009A0CF /* Current Rental */ = {
+			isa = PBXGroup;
+			children = (
+				F65B5E021E7B9F9D00E0F83A /* CurrentRentalViewController.h */,
+				F65B5E031E7B9F9D00E0F83A /* CurrentRentalViewController.m */,
+			);
+			name = "Current Rental";
+			sourceTree = "<group>";
+		};
+		F6139A591E8DF1F20009A0CF /* New Rental */ = {
+			isa = PBXGroup;
+			children = (
+				F65B5E081E7B9FB800E0F83A /* NewRentalViewController.h */,
+				F65B5E091E7B9FB800E0F83A /* NewRentalViewController.m */,
+			);
+			name = "New Rental";
+			sourceTree = "<group>";
+		};
 		F65B5DD31E7B7BD100E0F83A = {
 			isa = PBXGroup;
 			children = (
@@ -124,18 +185,10 @@
 		F65B5DF61E7B7BE700E0F83A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F65B5DE51E7B7BD100E0F83A /* ViewController.h */,
-				F65B5DE61E7B7BD100E0F83A /* ViewController.m */,
-				F65B5DFC1E7B9F1900E0F83A /* NewUserViewController.h */,
-				F65B5DFD1E7B9F1900E0F83A /* NewUserViewController.m */,
-				F65B5DFF1E7B9F4700E0F83A /* ReturnUserViewController.h */,
-				F65B5E001E7B9F4700E0F83A /* ReturnUserViewController.m */,
-				F65B5E021E7B9F9D00E0F83A /* CurrentRentalViewController.h */,
-				F65B5E031E7B9F9D00E0F83A /* CurrentRentalViewController.m */,
-				F65B5E051E7B9FA800E0F83A /* RentalsViewController.h */,
-				F65B5E061E7B9FA800E0F83A /* RentalsViewController.m */,
-				F65B5E081E7B9FB800E0F83A /* NewRentalViewController.h */,
-				F65B5E091E7B9FB800E0F83A /* NewRentalViewController.m */,
+				F6139A571E8DF1D10009A0CF /* Rental Screen */,
+				F6139A561E8DF1BE0009A0CF /* Main */,
+				F6139A551E8DF19D0009A0CF /* Registered User */,
+				F6139A531E8DF17A0009A0CF /* Registration */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -242,6 +295,7 @@
 				F65B5E071E7B9FA800E0F83A /* RentalsViewController.m in Sources */,
 				F65B5E041E7B9F9D00E0F83A /* CurrentRentalViewController.m in Sources */,
 				F65B5DE71E7B7BD100E0F83A /* ViewController.m in Sources */,
+				F6139A521E8DEAC90009A0CF /* NewUser2ViewController.m in Sources */,
 				F65B5E0A1E7B9FB800E0F83A /* NewRentalViewController.m in Sources */,
 				F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */,
 				F65B5DFE1E7B9F1900E0F83A /* NewUserViewController.m in Sources */,
