@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE527D5B1E8DECDB00CF8107 /* FinalProjectDatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */; };
+		AE527D5F1E8DED0700CF8107 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */; };
+		AE527D601E8DED0700CF8107 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */; };
 		F65B5DE11E7B7BD100E0F83A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE01E7B7BD100E0F83A /* main.m */; };
 		F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE31E7B7BD100E0F83A /* AppDelegate.m */; };
 		F65B5DE71E7B7BD100E0F83A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE61E7B7BD100E0F83A /* ViewController.m */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = FinalProjectDatabase.db; path = ../../../../../FinalProjectDatabase.db; sourceTree = "<group>"; };
+		AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		F65B5DDC1E7B7BD100E0F83A /* OnTheSpotRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheSpotRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65B5DE01E7B7BD100E0F83A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F65B5DE21E7B7BD100E0F83A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -50,17 +56,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE527D5F1E8DED0700CF8107 /* libsqlite3.0.tbd in Frameworks */,
+				AE527D601E8DED0700CF8107 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE527D591E8DECC500CF8107 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				AE527D5A1E8DECDB00CF8107 /* FinalProjectDatabase.db */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
+		AE527D5C1E8DED0700CF8107 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */,
+				AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F65B5DD31E7B7BD100E0F83A = {
 			isa = PBXGroup;
 			children = (
 				F65B5DDE1E7B7BD100E0F83A /* OnTheSpotRental */,
 				F65B5DDD1E7B7BD100E0F83A /* Products */,
+				AE527D5C1E8DED0700CF8107 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +101,7 @@
 		F65B5DDE1E7B7BD100E0F83A /* OnTheSpotRental */ = {
 			isa = PBXGroup;
 			children = (
+				AE527D591E8DECC500CF8107 /* Database */,
 				F65B5DF91E7B7ED800E0F83A /* Raw */,
 				F65B5DF81E7B7BF600E0F83A /* Storyboards */,
 				F65B5DF71E7B7BEF00E0F83A /* Special Classes */,
@@ -198,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65B5DEF1E7B7BD100E0F83A /* LaunchScreen.storyboard in Resources */,
+				AE527D5B1E8DECDB00CF8107 /* FinalProjectDatabase.db in Resources */,
 				F65B5DFB1E7B7F3800E0F83A /* car_intro.png in Resources */,
 				F65B5DEC1E7B7BD100E0F83A /* Assets.xcassets in Resources */,
 				F65B5DEA1E7B7BD100E0F83A /* Main.storyboard in Resources */,
@@ -375,6 +403,7 @@
 				F65B5DF51E7B7BD100E0F83A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

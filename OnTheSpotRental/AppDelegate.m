@@ -7,17 +7,80 @@
 //
 
 #import "AppDelegate.h"
+#import <sqlite3.h>
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+@synthesize databaseName, databasePath, people;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.people = [NSMutableArray array];
+    self.databaseName = @"FinalProjectDatabase.db";
+    
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    
+    self.databasePath = [documentsDir stringByAppendingPathComponent:self.databaseName];
+    
+    [self checkAndCreateDatabase];
+    [self readDataFromDatabase];
+    
     return YES;
+}
+
+-(void)readDataFromDatabase
+{
+    [self.people removeAllObjects];
+    
+    sqlite3 *database;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        char *sqlStatement = "select * from entries;";
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK);
+        {
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW)
+            {
+                char *n = (char *)sqlite3_column_text(compiledStatement, 1);
+                NSString *name = [NSString stringWithUTF8String:n];
+                
+                char *e = (char *)sqlite3_column_text(compiledStatement, 2);
+                NSString *email = [NSString stringWithUTF8String:e];
+                
+                char *f = (char *)sqlite3_column_text(compiledStatement, 3);
+                NSString *food = [NSString stringWithUTF8String:f];
+                
+                //Data *data = [[Data alloc] initWithData:name theEmail:email theFood:food];
+                //[self.people addObject:data];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+}
+
+-(void)checkAndCreateDatabase
+{
+    BOOL success;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    success = [fileManager fileExistsAtPath:self.databasePath];
+    
+    if(success) return;
+    
+    NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.databaseName];
+    
+    [fileManager copyItemAtPath:databasePathFromApp toPath:self.databasePath error:nil];
+    
+    return;
 }
 
 
