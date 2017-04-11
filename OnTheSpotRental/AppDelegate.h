@@ -12,13 +12,13 @@
 {
     NSString *databaseName;
     NSString *databasePath;
-    NSMutableArray *people;
+    NSMutableArray *cars;
 }
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) NSString *databaseName;
 @property (strong, nonatomic) NSString *databasePath;
-@property (strong, nonatomic) NSMutableArray *people;
+@property (strong, nonatomic) NSMutableArray *cars;
 -(void)readDataFromDatabase;
 
 @end

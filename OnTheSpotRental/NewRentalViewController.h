@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface NewRentalViewController : UIViewController
-
+@interface NewRentalViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+{
+    AppDelegate *mainDelegate;
+}
+@property (strong, nonatomic) AppDelegate *mainDelegate;
 @end

@@ -8,19 +8,20 @@
 
 #import "AppDelegate.h"
 #import <sqlite3.h>
+#import "Data.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-@synthesize databaseName, databasePath, people;
+@synthesize databaseName, databasePath, cars;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.people = [NSMutableArray array];
+    self.cars = [NSMutableArray array];
     self.databaseName = @"FinalProjectDatabase.db";
     
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -36,30 +37,30 @@
 
 -(void)readDataFromDatabase
 {
-    [self.people removeAllObjects];
+    [self.cars removeAllObjects];
     
     sqlite3 *database;
     
     if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK)
     {
-        char *sqlStatement = "select * from entries;";
+        char *sqlStatement = "select * from Car;";
         sqlite3_stmt *compiledStatement;
         
         if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
         {
             while(sqlite3_step(compiledStatement) == SQLITE_ROW)
             {
-                char *n = (char *)sqlite3_column_text(compiledStatement, 1);
-                NSString *name = [NSString stringWithUTF8String:n];
+                char *m = (char *)sqlite3_column_text(compiledStatement, 1);
+                NSString *make = [NSString stringWithUTF8String:m];
                 
-                char *e = (char *)sqlite3_column_text(compiledStatement, 2);
-                NSString *email = [NSString stringWithUTF8String:e];
+                char *mo = (char *)sqlite3_column_text(compiledStatement, 2);
+                NSString *model = [NSString stringWithUTF8String:mo];
                 
-                char *f = (char *)sqlite3_column_text(compiledStatement, 3);
-                NSString *food = [NSString stringWithUTF8String:f];
+                char *c = (char *)sqlite3_column_text(compiledStatement, 3);
+                NSString *colour = [NSString stringWithUTF8String:c];
                 
-                //Data *data = [[Data alloc] initWithData:name theEmail:email theFood:food];
-                //[self.people addObject:data];
+                Data *data = [[Data alloc] initWithData:make theModel:model theColour:colour];
+                [self.cars addObject:data];
             }
         }
         sqlite3_finalize(compiledStatement);

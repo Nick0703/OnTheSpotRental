@@ -10,6 +10,8 @@
 		AE527D5F1E8DED0700CF8107 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */; };
 		AE527D601E8DED0700CF8107 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */; };
 		AE527D621E8E998700CF8107 /* FinalProjectDatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = AE527D611E8E998700CF8107 /* FinalProjectDatabase.db */; };
+		AE527D861E9D7F5E00CF8107 /* SiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE527D851E9D7F5E00CF8107 /* SiteCell.m */; };
+		AE527D891E9D7F7100CF8107 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = AE527D881E9D7F7100CF8107 /* Data.m */; };
 		F6139A521E8DEAC90009A0CF /* NewUser2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6139A511E8DEAC90009A0CF /* NewUser2ViewController.m */; };
 		F65B5DE11E7B7BD100E0F83A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE01E7B7BD100E0F83A /* main.m */; };
 		F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DE31E7B7BD100E0F83A /* AppDelegate.m */; };
@@ -29,6 +31,10 @@
 		AE527D5D1E8DED0700CF8107 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		AE527D5E1E8DED0700CF8107 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AE527D611E8E998700CF8107 /* FinalProjectDatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinalProjectDatabase.db; sourceTree = "<group>"; };
+		AE527D841E9D7F5E00CF8107 /* SiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteCell.h; sourceTree = "<group>"; };
+		AE527D851E9D7F5E00CF8107 /* SiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteCell.m; sourceTree = "<group>"; };
+		AE527D871E9D7F7100CF8107 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		AE527D881E9D7F7100CF8107 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		F6139A501E8DEAC90009A0CF /* NewUser2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUser2ViewController.h; sourceTree = "<group>"; };
 		F6139A511E8DEAC90009A0CF /* NewUser2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUser2ViewController.m; sourceTree = "<group>"; };
 		F65B5DDC1E7B7BD100E0F83A /* OnTheSpotRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheSpotRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,8 +202,12 @@
 		F65B5DF71E7B7BEF00E0F83A /* Special Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AE527D841E9D7F5E00CF8107 /* SiteCell.h */,
+				AE527D851E9D7F5E00CF8107 /* SiteCell.m */,
 				F65B5DE21E7B7BD100E0F83A /* AppDelegate.h */,
 				F65B5DE31E7B7BD100E0F83A /* AppDelegate.m */,
+				AE527D871E9D7F7100CF8107 /* Data.h */,
+				AE527D881E9D7F7100CF8107 /* Data.m */,
 			);
 			name = "Special Classes";
 			sourceTree = "<group>";
@@ -297,7 +307,9 @@
 				F65B5DE71E7B7BD100E0F83A /* ViewController.m in Sources */,
 				F6139A521E8DEAC90009A0CF /* NewUser2ViewController.m in Sources */,
 				F65B5E0A1E7B9FB800E0F83A /* NewRentalViewController.m in Sources */,
+				AE527D891E9D7F7100CF8107 /* Data.m in Sources */,
 				F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */,
+				AE527D861E9D7F5E00CF8107 /* SiteCell.m in Sources */,
 				F65B5DFE1E7B9F1900E0F83A /* NewUserViewController.m in Sources */,
 				F65B5DE11E7B7BD100E0F83A /* main.m in Sources */,
 				F65B5E011E7B9F4700E0F83A /* ReturnUserViewController.m in Sources */,
