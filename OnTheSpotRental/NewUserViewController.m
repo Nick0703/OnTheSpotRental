@@ -14,7 +14,7 @@
 
 @implementation NewUserViewController
 
-- (IBAction)unwindToThisViewController2:(UIStoryboardSegue *)sender {
+- (IBAction)unwindToNewRegistrationController:(UIStoryboardSegue *)sender {
     
 }
 

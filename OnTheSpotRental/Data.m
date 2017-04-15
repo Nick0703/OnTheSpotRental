@@ -21,4 +21,8 @@
     }
     return self;
 }
+
+- (id)init {
+    return [self initWithData:@"Make" theModel:@"Model" theColour:@"Color"];
+}
 @end

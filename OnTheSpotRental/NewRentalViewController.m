@@ -18,9 +18,10 @@
 @implementation NewRentalViewController
 @synthesize mainDelegate;
 
+#pragma mark Database methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.mainDelegate.cars count];
+    return [mainDelegate.cars count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,6 +49,24 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+
+#pragma mark App methods
+
+- (IBAction)unwindToNewRentalController:(UIStoryboardSegue *)sender {
+    
+}
+
+// Hide keyboard when touching the backgroud
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder]; // Hide the keyboard and return the control
+    return NO;
 }
 
 - (void)viewDidLoad {

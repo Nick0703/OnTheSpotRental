@@ -14,6 +14,10 @@
 
 @implementation RentalsViewController
 
+- (IBAction)unwindToRentalController:(UIStoryboardSegue *)sender {
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

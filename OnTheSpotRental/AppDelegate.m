@@ -17,24 +17,7 @@
 @implementation AppDelegate
 @synthesize databaseName, databasePath, cars;
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    self.cars = [NSMutableArray array];
-    self.databaseName = @"FinalProjectDatabase.db";
-    
-    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDir = [documentPaths objectAtIndex:0];
-    
-    self.databasePath = [documentsDir stringByAppendingPathComponent:self.databaseName];
-    
-    [self checkAndCreateDatabase];
-    [self readDataFromDatabase];
-    
-    return YES;
-}
-
+#pragma mark Database Methods
 -(void)readDataFromDatabase
 {
     [self.cars removeAllObjects];
@@ -50,14 +33,14 @@
         {
             while(sqlite3_step(compiledStatement) == SQLITE_ROW)
             {
-                char *m = (char *)sqlite3_column_text(compiledStatement, 1);
-                NSString *make = [NSString stringWithUTF8String:m];
+                char *ma = (char *)sqlite3_column_text(compiledStatement, 1);
+                NSString *make = [NSString stringWithUTF8String:ma];
                 
                 char *mo = (char *)sqlite3_column_text(compiledStatement, 2);
                 NSString *model = [NSString stringWithUTF8String:mo];
                 
-                char *c = (char *)sqlite3_column_text(compiledStatement, 3);
-                NSString *colour = [NSString stringWithUTF8String:c];
+                char *co = (char *)sqlite3_column_text(compiledStatement, 3);
+                NSString *colour = [NSString stringWithUTF8String:co];
                 
                 Data *data = [[Data alloc] initWithData:make theModel:model theColour:colour];
                 [self.cars addObject:data];
@@ -84,6 +67,23 @@
     return;
 }
 
+#pragma mark App Methods
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    
+    self.cars = [[NSMutableArray array] init];
+    self.databaseName = @"FinalProjectDatabase.db";
+    
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    
+    self.databasePath = [documentsDir stringByAppendingPathComponent:self.databaseName];
+    
+    [self checkAndCreateDatabase];
+    [self readDataFromDatabase];
+    
+    return YES;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

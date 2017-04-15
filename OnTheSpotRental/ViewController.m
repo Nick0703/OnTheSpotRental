@@ -14,7 +14,7 @@
 
 @implementation ViewController
 
-- (IBAction)unwindToThisViewController:(UIStoryboardSegue *)sender {
+- (IBAction)unwindToMainController:(UIStoryboardSegue *)sender {
     
 }
 
