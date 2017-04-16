@@ -2,8 +2,8 @@
 //  SiteCell.m
 //  NibsAndTables2
 //
-//  Created by Xcode User on 2017-03-21.
-//  Copyright © 2017 Xcode User. All rights reserved.
+//  Created by Jawaad Sheikh on 2016-03-15.
+//  Copyright © 2016 Jawaad Sheikh. All rights reserved.
 //
 
 #import "SiteCell.h"
@@ -14,27 +14,36 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self)
-    {
+    
+    if(self){
         primaryLabel = [[UILabel alloc] init];
-        primaryLabel.font = [UIFont systemFontOfSize:18];
-        primaryLabel.textColor = [UIColor blackColor];
-        primaryLabel.backgroundColor = [UIColor clearColor];
         primaryLabel.textAlignment = NSTextAlignmentLeft;
         
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        primaryLabel.font = [UIFont systemFontOfSize:36];
+        else
+            primaryLabel.font = [UIFont systemFontOfSize:18];
+        
+        primaryLabel.backgroundColor = [UIColor clearColor];
+        primaryLabel.textColor = [UIColor blackColor];
+ 
         secondaryLabel = [[UILabel alloc] init];
-        secondaryLabel.font = [UIFont systemFontOfSize:12];
-        secondaryLabel.textColor = [UIColor blueColor];
-        secondaryLabel.backgroundColor = [UIColor clearColor];
         secondaryLabel.textAlignment = NSTextAlignmentLeft;
-                               
+        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+            secondaryLabel.font = [UIFont systemFontOfSize:24];
+        else
+            secondaryLabel.font = [UIFont systemFontOfSize:12];
+        
+        secondaryLabel.backgroundColor = [UIColor clearColor];
+        secondaryLabel.textColor = [UIColor blueColor];
+        
         myImageView = [[UIImageView alloc] init];
         
+        [self.contentView addSubview:myImageView];
         [self.contentView addSubview:primaryLabel];
         [self.contentView addSubview:secondaryLabel];
-        [self.contentView addSubview:myImageView];
-                               
-                               
+        
     }
     return self;
 }
@@ -43,9 +52,31 @@
 {
     [super layoutSubviews];
     
-    myImageView.frame = CGRectMake(5, 5, 40, 40);
-    primaryLabel.frame = CGRectMake(110, 5, 260, 20);
-    secondaryLabel.frame = CGRectMake(110, 30, 260, 20);
+    CGRect frame;
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        frame = CGRectMake(15, 15, 80, 80);
+        myImageView.frame = frame;
+        
+        frame = CGRectMake(200, 15, 460, 40);
+        primaryLabel.frame = frame;
+        
+        frame = CGRectMake(200, 60, 460, 40);
+        secondaryLabel.frame = frame;
+    }
+    else
+    {
+        frame = CGRectMake(5, 5, 40, 40);
+        myImageView.frame = frame;
+    
+        frame = CGRectMake(110, 5, 260, 20);
+        primaryLabel.frame = frame;
+    
+        frame = CGRectMake(110, 30, 260, 20);
+        secondaryLabel.frame = frame;
+    }
+    
 }
 
 - (void)awakeFromNib {

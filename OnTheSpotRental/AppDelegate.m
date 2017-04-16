@@ -8,57 +8,25 @@
 
 #import "AppDelegate.h"
 #import <sqlite3.h>
-#import "Data.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+
+#pragma mark Database Methods
 @synthesize databaseName, databasePath, cars;
 
 #pragma mark Database Methods
--(void)readDataFromDatabase
-{
-    [self.cars removeAllObjects];
-    
-    sqlite3 *database;
-    
-    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK)
-    {
-        char *sqlStatement = "select * from Car;";
-        sqlite3_stmt *compiledStatement;
-        
-        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
-        {
-            while(sqlite3_step(compiledStatement) == SQLITE_ROW)
-            {
-                char *ma = (char *)sqlite3_column_text(compiledStatement, 1);
-                NSString *make = [NSString stringWithUTF8String:ma];
-                
-                char *mo = (char *)sqlite3_column_text(compiledStatement, 2);
-                NSString *model = [NSString stringWithUTF8String:mo];
-                
-                char *co = (char *)sqlite3_column_text(compiledStatement, 3);
-                NSString *colour = [NSString stringWithUTF8String:co];
-                
-                Data *data = [[Data alloc] initWithData:make theModel:model theColour:colour];
-                [self.cars addObject:data];
-            }
-        }
-        sqlite3_finalize(compiledStatement);
-    }
-    sqlite3_close(database);
-}
-
--(void)checkAndCreateDatabase
-{
+- (void)checkAndCreateDatabase {
     BOOL success;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     success = [fileManager fileExistsAtPath:self.databasePath];
     
-    if(success) return;
+    if(success)
+        return;
     
     NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.databaseName];
     
@@ -67,21 +35,55 @@
     return;
 }
 
+- (void)readDataFromCarInfo {
+    [self.cars removeAllObjects];
+    
+    sqlite3 *database;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
+        char *sqlStatement = "select * from carInfo";
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                char *pi = (char *)sqlite3_column_text(compiledStatement, 1); // picture
+                char *ma = (char *)sqlite3_column_text(compiledStatement, 2); // make
+                char *mo = (char *)sqlite3_column_text(compiledStatement, 3); // model
+                char *mp = (char *)sqlite3_column_text(compiledStatement, 4); // mpg
+                char *co = (char *)sqlite3_column_text(compiledStatement, 5); // cost
+                
+                NSString *picture = [NSString stringWithUTF8String:pi];
+                NSString *make = [NSString stringWithUTF8String:ma];
+                NSString *model = [NSString stringWithUTF8String:mo];
+                NSString *mpg = [NSString stringWithUTF8String:mp];
+                NSString *cost = [NSString stringWithUTF8String:co];
+
+                
+                CarInfo *carInfo = [[CarInfo alloc] initWithData:picture theMake:make theModel:model theMpg:mpg theCost:cost];
+                [self.cars addObject:carInfo];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+}
+
+
+
 #pragma mark App Methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.cars = [[NSMutableArray array] init];
+    self.cars = [[NSMutableArray alloc] init];
     self.databaseName = @"FinalProjectDatabase.db";
     
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDir = [documentPaths objectAtIndex:0];
-    
     self.databasePath = [documentsDir stringByAppendingPathComponent:self.databaseName];
     
     [self checkAndCreateDatabase];
-    [self readDataFromDatabase];
-    
+    [self readDataFromCarInfo];
+
     return YES;
 }
 

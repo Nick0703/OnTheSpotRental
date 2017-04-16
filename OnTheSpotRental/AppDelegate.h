@@ -7,19 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CarInfo.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
+
     NSString *databaseName;
     NSString *databasePath;
     NSMutableArray *cars;
 }
-@property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *databaseName;
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSMutableArray *cars;
--(void)readDataFromDatabase;
+
+- (void)checkAndCreateDatabase;
+- (void)readDataFromCarInfo;
+//- (BOOL)insertIntoDatase:(CarInfo *)car;
 
 @end
 

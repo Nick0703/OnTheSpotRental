@@ -12,6 +12,10 @@
 @interface NewRentalViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     AppDelegate *mainDelegate;
+    IBOutlet UITableView *tbView;
 }
+
 @property (strong, nonatomic) AppDelegate *mainDelegate;
+@property (nonatomic, strong )IBOutlet UITableView *tbView;
+
 @end

@@ -2,8 +2,8 @@
 //  SiteCell.h
 //  NibsAndTables2
 //
-//  Created by Xcode User on 2017-03-21.
-//  Copyright © 2017 Xcode User. All rights reserved.
+//  Created by Jawaad Sheikh on 2016-03-15.
+//  Copyright © 2016 Jawaad Sheikh. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,7 +14,11 @@
     UILabel *secondaryLabel;
     UIImageView *myImageView;
 }
+
 @property (nonatomic, strong) UILabel *primaryLabel;
 @property (nonatomic, strong) UILabel *secondaryLabel;
 @property (nonatomic, strong) UIImageView *myImageView;
+
+
+
 @end

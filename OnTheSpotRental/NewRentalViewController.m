@@ -7,50 +7,61 @@
 //
 
 #import "NewRentalViewController.h"
-#import "Data.h"
 #import "SiteCell.h"
-#import "AppDelegate.h"
 
 @interface NewRentalViewController ()
 
 @end
 
 @implementation NewRentalViewController
-@synthesize mainDelegate;
+@synthesize  mainDelegate, tbView;
 
-#pragma mark Database methods
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+#pragma mark Table Methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [mainDelegate.cars count];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *cellIdentifier = @"cell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellIdentifier = @"Cell";
     
     SiteCell *cell = (SiteCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    if(cell == nil)
-    {
+    if(cell == nil) {
         cell = [[SiteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     NSInteger row = indexPath.row;
-    Data *d = [mainDelegate.cars objectAtIndex:row];
-    
-    cell.primaryLabel.text = d.make;
-    cell.secondaryLabel.text = d.model;
+    CarInfo *carInfo = [mainDelegate.cars objectAtIndex:row];
+
+    cell.primaryLabel.text = carInfo.make;
+    cell.secondaryLabel.text = carInfo.model;
+    cell.myImageView.image = [UIImage imageNamed:carInfo.picture];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
+    
+    CarInfo *carInfo = [mainDelegate.cars objectAtIndex:row];
+    
+    NSString *make = carInfo.make;
+    NSString *msg = [NSString stringWithFormat:@"Model: %@\n Miles per gallon: %@\n"
+                     @"Cost per day: %@\n", carInfo.model, carInfo.mpg, carInfo.cost];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:make message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark App methods
 
@@ -72,8 +83,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.mainDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [mainDelegate readDataFromDatabase];
+    
+    self.mainDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    [mainDelegate readDataFromCarInfo];
+
 }
 
 - (void)didReceiveMemoryWarning {
