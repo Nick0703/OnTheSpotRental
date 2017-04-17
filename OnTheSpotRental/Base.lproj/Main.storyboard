@@ -958,6 +958,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1050"/>
                     <connections>
+                        <outlet property="lblCardCVC" destination="vcB-4o-yCP" id="Lhr-N6-gWS"/>
+                        <outlet property="lblCardExp" destination="Kba-l7-kac" id="W8E-xC-S4d"/>
+                        <outlet property="lblCardName" destination="MSG-PY-QX4" id="OHi-vJ-RrP"/>
+                        <outlet property="lblCardNum" destination="tfP-L5-O2W" id="urw-ul-NcQ"/>
                         <outlet property="lblPPPass" destination="Fy6-iy-Pus" id="UBH-my-zhZ"/>
                         <outlet property="lblPPUsername" destination="vPV-hc-RjS" id="WpC-Xm-vby"/>
                         <outlet property="segPayment" destination="2FH-Gm-Wjw" id="Rce-1p-eYX"/>

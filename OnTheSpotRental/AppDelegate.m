@@ -35,6 +35,7 @@
     return;
 }
 
+// Read CarInfo Table
 - (void)readDataFromCarInfo {
     [self.cars removeAllObjects];
     
@@ -68,6 +69,7 @@
     sqlite3_close(database);
 }
 
+// Read CustomerInfo Table
 - (void)readDataFromCustomerInfo {
     [self.customers removeAllObjects];
     
@@ -79,19 +81,19 @@
         
         if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
             while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-                char *na = (char *)sqlite3_column_text(compiledStatement, 1);
-                char *st = (char *)sqlite3_column_text(compiledStatement, 2);
-                char *ci = (char *)sqlite3_column_text(compiledStatement, 3);
-                char *pc = (char *)sqlite3_column_text(compiledStatement, 4);
-                char *ph = (char *)sqlite3_column_text(compiledStatement, 5);
-                char *py = (char *)sqlite3_column_text(compiledStatement, 6);
-                char *cn = (char *)sqlite3_column_text(compiledStatement, 7);
-                char *co = (char *)sqlite3_column_text(compiledStatement, 8);
-                char *cv = (char *)sqlite3_column_text(compiledStatement, 9);
-                char *mm = (char *)sqlite3_column_text(compiledStatement, 10);
-                char *yy = (char *)sqlite3_column_text(compiledStatement, 11);
-                char *pu = (char *)sqlite3_column_text(compiledStatement, 12);
-                char *pp = (char *)sqlite3_column_text(compiledStatement, 13);
+                char *na = (char *)sqlite3_column_text(compiledStatement, 1); // Name
+                char *st = (char *)sqlite3_column_text(compiledStatement, 2); // Street
+                char *ci = (char *)sqlite3_column_text(compiledStatement, 3); // City
+                char *pc = (char *)sqlite3_column_text(compiledStatement, 4); // Postal Code
+                char *ph = (char *)sqlite3_column_text(compiledStatement, 5); // Phone number
+                char *py = (char *)sqlite3_column_text(compiledStatement, 6); // Payment Method
+                char *cn = (char *)sqlite3_column_text(compiledStatement, 7); // Card Name
+                char *co = (char *)sqlite3_column_text(compiledStatement, 8); // Card Number
+                char *cv = (char *)sqlite3_column_text(compiledStatement, 9); // Card CVC Number
+                char *mm = (char *)sqlite3_column_text(compiledStatement, 10); // Card MM Expiry
+                char *yy = (char *)sqlite3_column_text(compiledStatement, 11); // Card YY Expiry
+                char *pu = (char *)sqlite3_column_text(compiledStatement, 12); // Paypal Username
+                char *pp = (char *)sqlite3_column_text(compiledStatement, 13); // Paypal Password
 
                 NSString *name = [NSString stringWithUTF8String:na];
                 NSString *street = [NSString stringWithUTF8String:st];
@@ -117,11 +119,11 @@
     sqlite3_close(database);
 }
 
+// Get Customer ID from CustomerInfo Table
 - (NSString *)readDataFromCustomerInfoID:(NSString *)name thePhone:(NSString *)phone {
     [self.logins removeAllObjects];
     
     sqlite3 *database;
-    BOOL returnCode = NO;
     NSString *user_id;
     
     if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
@@ -134,7 +136,9 @@
             while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
                 char *ui = (char *)sqlite3_column_text(compiledStatement, 0);
                 
-                NSString *user_id = [NSString stringWithUTF8String:ui];
+                NSString *uid = [NSString stringWithUTF8String:ui];
+                user_id = [NSString stringWithString:uid];
+                NSLog(@"User ID IS %@", user_id);
             }
         }
         sqlite3_finalize(compiledStatement);
@@ -145,6 +149,7 @@
 
 
 // This is causing the app to crash....
+// Insert into CustomerInfo Table
 - (BOOL)insertIntoCustomerInfo:(CustomerInfo *)customer {
     sqlite3 *database;
     BOOL returnCode = YES;
@@ -187,13 +192,14 @@
     return returnCode;
 }
 
+// Insert into LoginInfo Table
 - (BOOL)insertIntoLoginInfo:(LoginInfo *)login {
     sqlite3 *database;
     BOOL returnCode = YES;
     
     if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK)
     {
-        char *sqlStatement = "insert into customerInfo values(NULL, ?, ?, ?);";
+        char *sqlStatement = "insert into loginInfo values(NULL, ?, ?, ?);";
         sqlite3_stmt *compiledStatement;
         
         if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
@@ -219,11 +225,12 @@
     return returnCode;
 }
 
+// Read from LoginInfo Table AKA Valid the Login Screen
 - (BOOL)readDataFromLoginInfo:(NSString *)username thePassword:(NSString *)password {
     [self.logins removeAllObjects];
     
     sqlite3 *database;
-    BOOL returnCode = NO;
+    BOOL returnCode = NO; // User not found by default
     
     if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
         
@@ -233,7 +240,7 @@
         
         if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
             while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-                returnCode = YES;
+                returnCode = YES; // User Found
                 char *un = (char *)sqlite3_column_text(compiledStatement, 1);
                 char *pp = (char *)sqlite3_column_text(compiledStatement, 2);
                 char *ui = (char *)sqlite3_column_text(compiledStatement, 3);

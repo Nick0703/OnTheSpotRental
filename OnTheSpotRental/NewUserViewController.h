@@ -18,6 +18,10 @@
     IBOutlet UITextField *txtPass;
     IBOutlet UITextField *txtPassConf;
     IBOutlet UISegmentedControl *segPayment;
+    IBOutlet UILabel *lblCardName;
+    IBOutlet UILabel *lblCardNum;
+    IBOutlet UILabel *lblCardCVC;
+    IBOutlet UILabel *lblCardExp;
     IBOutlet UITextField *txtCardName;
     IBOutlet UITextField *txtCardNum;
     IBOutlet UITextField *txtCardCVC;
@@ -47,5 +51,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblPPPass;
 @property (strong, nonatomic) IBOutlet UITextField *txtPPUsername;
 @property (strong, nonatomic) IBOutlet UITextField *txtPPPass;
+@property (strong, nonatomic) IBOutlet UILabel *lblCardName;
+@property (strong, nonatomic) IBOutlet UILabel *lblCardNum;
+@property (strong, nonatomic) IBOutlet UILabel *lblCardCVC;
+@property (strong, nonatomic) IBOutlet UILabel *lblCardExp;
 
 @end

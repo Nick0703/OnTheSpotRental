@@ -16,7 +16,7 @@
 
 @implementation NewUserViewController
 @synthesize txtCardName, txtCardNum, txtCardCVC, txtCardMM, txtCardYY, segPayment,
-txtPPUsername, txtPPPass, lblPPPass, lblPPUsername, txtName, txtStreet, txtCity, txtPostal, txtPhoneNum, txtUsername, txtPass, txtPassConf;
+txtPPUsername, txtPPPass, lblPPPass, lblPPUsername, txtName, txtStreet, txtCity, txtPostal, txtPhoneNum, txtUsername, txtPass, txtPassConf, lblCardName, lblCardNum, lblCardCVC, lblCardExp;
 
 - (IBAction)unwindToNewRegistrationController:(UIStoryboardSegue *)sender {
 }
@@ -36,16 +36,26 @@ txtPPUsername, txtPPPass, lblPPPass, lblPPUsername, txtName, txtStreet, txtCity,
     NSInteger payment = segPayment.selectedSegmentIndex;
     
     if(payment == 0 || payment == 1) { // Debit or Visa
-        [lblPPUsername setEnabled:NO];
-        [lblPPPass setEnabled:NO];
-        [txtPPPass setEnabled:NO];
-        [txtPPUsername setEnabled:NO];
+        [self disableFieldsLable:true];
     } else { // Paypal
-        [lblPPUsername setEnabled:YES];
-        [lblPPPass setEnabled:YES];
-        [txtPPPass setEnabled:YES];
-        [txtPPUsername setEnabled:YES];
+        [self disableFieldsLable:false];
     }
+}
+
+- (void)disableFieldsLable:(BOOL)enable {
+    [lblPPUsername setEnabled:!enable];
+    [lblPPPass setEnabled:!enable];
+    [txtPPPass setEnabled:!enable];
+    [txtPPUsername setEnabled:!enable];
+    [lblCardName setEnabled:enable];
+    [lblCardNum setEnabled:enable];
+    [lblCardCVC setEnabled:enable];
+    [lblCardExp setEnabled:enable];
+    [txtCardNum setEnabled:enable];
+    [txtCardName setEnabled:enable];
+    [txtCardCVC setEnabled:enable];
+    [txtCardMM setEnabled:enable];
+    [txtCardYY setEnabled:enable];
 }
 
 - (IBAction)informUser:(id)sender { // Submit button
@@ -65,6 +75,7 @@ txtPPUsername, txtPPPass, lblPPPass, lblPPUsername, txtName, txtStreet, txtCity,
         //&& (txtCardYY.text && txtCardYY.text.length > 0)) { // All the fields filled and avatar selected
         if ([password isEqualToString:password_conf]) {
             [self addUser]; // Add to Database
+            NSLog(@"Adding User");
             /*UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Thank You!" message:@"Thank you for registering." preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -123,10 +134,10 @@ txtPPUsername, txtPPPass, lblPPPass, lblPPUsername, txtName, txtStreet, txtCity,
     NSString *paypal_pass = [txtPPPass text];
     
     CustomerInfo *customer = [[CustomerInfo alloc] initWithData:name theStreet:street theCity:city thePostal:postal_code thePhone:phone_num thePayment:paymentType theCardName:card_name theCardNum:card_num theCardCVC:card_cvc theCardMM:card_mm theCardYY:card_yy thePaypalU:paypal_user thePayPalP:paypal_pass];
+    BOOL returnCode = [mainDelegate insertIntoCustomerInfo:customer];
+    
     NSString *user_ID = [mainDelegate readDataFromCustomerInfoID:name thePhone:phone_num];
     LoginInfo *login = [[LoginInfo alloc] initWithData:username thePassword:password theCustomer:user_ID];
-    
-    BOOL returnCode = [mainDelegate insertIntoCustomerInfo:customer];
     BOOL returnCode1 = [mainDelegate insertIntoLoginInfo:login];
     
     if(returnCode == NO || returnCode1 == NO) {
