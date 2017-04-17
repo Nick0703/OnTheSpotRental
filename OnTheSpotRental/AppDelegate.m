@@ -16,7 +16,7 @@
 @implementation AppDelegate
 
 #pragma mark Database Methods
-@synthesize databaseName, databasePath, cars;
+@synthesize databaseName, databasePath, cars, logins, customers;
 
 #pragma mark Database Methods
 - (void)checkAndCreateDatabase {
@@ -41,7 +41,7 @@
     sqlite3 *database;
     
     if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
-        char *sqlStatement = "select * from carInfo";
+        char *sqlStatement = "select * from carInfo;";
         sqlite3_stmt *compiledStatement;
         
         if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
@@ -68,6 +68,162 @@
     sqlite3_close(database);
 }
 
+- (void)readDataFromCustomerInfo {
+    [self.customers removeAllObjects];
+    
+    sqlite3 *database;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
+        char *sqlStatement = "select * from customerInfo;";
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                char *na = (char *)sqlite3_column_text(compiledStatement, 1);
+                char *st = (char *)sqlite3_column_text(compiledStatement, 2);
+                char *ci = (char *)sqlite3_column_text(compiledStatement, 3);
+                char *pc = (char *)sqlite3_column_text(compiledStatement, 4);
+                char *ph = (char *)sqlite3_column_text(compiledStatement, 5);
+                char *py = (char *)sqlite3_column_text(compiledStatement, 6);
+                char *cn = (char *)sqlite3_column_text(compiledStatement, 7);
+                char *co = (char *)sqlite3_column_text(compiledStatement, 8);
+                char *cv = (char *)sqlite3_column_text(compiledStatement, 9);
+                char *mm = (char *)sqlite3_column_text(compiledStatement, 10);
+                char *yy = (char *)sqlite3_column_text(compiledStatement, 11);
+                char *pu = (char *)sqlite3_column_text(compiledStatement, 12);
+                char *pp = (char *)sqlite3_column_text(compiledStatement, 13);
+
+                NSString *name = [NSString stringWithUTF8String:na];
+                NSString *street = [NSString stringWithUTF8String:st];
+                NSString *city = [NSString stringWithUTF8String:ci];
+                NSString *postal = [NSString stringWithUTF8String:pc];
+                NSString *phone = [NSString stringWithUTF8String:ph];
+                NSString *paymentType = [NSString stringWithUTF8String:py];
+                NSString *cardName = [NSString stringWithUTF8String:cn];
+                NSString *cardNum = [NSString stringWithUTF8String:co];
+                NSString *cardCVC = [NSString stringWithUTF8String:cv];
+                NSString *cardMM = [NSString stringWithUTF8String:mm];
+                NSString *cardYY = [NSString stringWithUTF8String:yy];
+                NSString *paypalUser = [NSString stringWithUTF8String:pu];
+                NSString *paypalPass = [NSString stringWithUTF8String:pp];
+                
+                CustomerInfo *customerInfo = [[CustomerInfo alloc] initWithData:name theStreet:street theCity:city thePostal:postal thePhone:phone thePayment:paymentType theCardName:cardName theCardNum:cardNum theCardCVC:cardCVC theCardMM:cardMM theCardYY:cardYY thePaypalU:paypalUser thePayPalP:paypalPass];
+                
+                [self.customers addObject:customerInfo];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+}
+
+// This is causing the app to crash....
+- (BOOL)insertIntoCustomerInfo:(CustomerInfo *)customer {
+    sqlite3 *database;
+    BOOL returnCode = YES;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        char *sqlStatement = "insert into customerInfo values(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
+        {
+            sqlite3_bind_text(compiledStatement, 1, [customer.name UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 2, [customer.street UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 3, [customer.city UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 4, [customer.postal_code UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 5, [customer.phone_number UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 6, [customer.payment_type UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 7, [customer.card_name UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 8, [customer.card_number UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 9, [customer.card_cvc UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 10, [customer.card_expmm UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 11, [customer.card_expyy UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 12, [customer.paypal_user UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 13, [customer.paypal_pass UTF8String], -1, SQLITE_TRANSIENT);
+        }
+        
+        if(sqlite3_step(compiledStatement) != SQLITE_DONE)
+        {
+            NSLog(@"Error: %s", sqlite3_errmsg(database));
+            returnCode = NO;
+        }
+        else
+        {
+            NSLog(@"Insert into row id = %lld", sqlite3_last_insert_rowid(database));
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    
+    sqlite3_close(database);
+    return returnCode;
+}
+
+- (BOOL)insertIntoLoginInfo:(LoginInfo *)login {
+    sqlite3 *database;
+    BOOL returnCode = YES;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        char *sqlStatement = "insert into customerInfo values(NULL, ?, ?, ?);";
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
+        {
+            sqlite3_bind_text(compiledStatement, 1, [login.username UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 2, [login.password UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 3, [login.customerID UTF8String], -1, SQLITE_TRANSIENT);
+        }
+        
+        if(sqlite3_step(compiledStatement) != SQLITE_DONE)
+        {
+            NSLog(@"Error: %s", sqlite3_errmsg(database));
+            returnCode = NO;
+        }
+        else
+        {
+            NSLog(@"Insert into row id = %lld", sqlite3_last_insert_rowid(database));
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    
+    sqlite3_close(database);
+    return returnCode;
+}
+
+- (BOOL)readDataFromLoginInfo:(NSString *)username thePassword:(NSString *)password {
+    [self.logins removeAllObjects];
+    
+    sqlite3 *database;
+    BOOL returnCode = NO;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        NSString *querySelect = [NSString stringWithFormat:@"select * from loginInfo where username='%@' and password='%@';", username, password];
+        const char *sqlStatement = [querySelect UTF8String];
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                returnCode = YES;
+                char *un = (char *)sqlite3_column_text(compiledStatement, 1);
+                char *pp = (char *)sqlite3_column_text(compiledStatement, 2);
+                char *ui = (char *)sqlite3_column_text(compiledStatement, 3);
+                
+                NSString *username = [NSString stringWithUTF8String:un];
+                NSString *password = [NSString stringWithUTF8String:pp];
+                NSString *user_id = [NSString stringWithUTF8String:ui];
+                
+                LoginInfo *loginInfo = [[LoginInfo alloc] initWithData:username thePassword:password theCustomer:user_id];
+                [self.logins addObject:loginInfo];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    return returnCode;
+}
 
 
 #pragma mark App Methods
@@ -83,6 +239,8 @@
     
     [self checkAndCreateDatabase];
     [self readDataFromCarInfo];
+    //[self readDataFromCustomerInfo];
+    [self readDataFromLoginInfo:@"username" thePassword:@"sheridan"];
 
     return YES;
 }

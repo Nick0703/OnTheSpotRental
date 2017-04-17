@@ -18,13 +18,14 @@
 		F65B5DEF1E7B7BD100E0F83A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F65B5DED1E7B7BD100E0F83A /* LaunchScreen.storyboard */; };
 		F65B5DFB1E7B7F3800E0F83A /* car_intro.png in Resources */ = {isa = PBXBuildFile; fileRef = F65B5DFA1E7B7F3800E0F83A /* car_intro.png */; };
 		F65B5DFE1E7B9F1900E0F83A /* NewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5DFD1E7B9F1900E0F83A /* NewUserViewController.m */; };
-		F65B5E011E7B9F4700E0F83A /* ReturnUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5E001E7B9F4700E0F83A /* ReturnUserViewController.m */; };
 		F65B5E041E7B9F9D00E0F83A /* CurrentRentalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5E031E7B9F9D00E0F83A /* CurrentRentalViewController.m */; };
 		F65B5E071E7B9FA800E0F83A /* RentalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5E061E7B9FA800E0F83A /* RentalsViewController.m */; };
 		F65B5E0A1E7B9FB800E0F83A /* NewRentalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5E091E7B9FB800E0F83A /* NewRentalViewController.m */; };
 		F6CE45D81EA3ED970056A964 /* CarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45D71EA3ED970056A964 /* CarInfo.m */; };
 		F6CE45DB1EA3F0040056A964 /* SiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45DA1EA3F0040056A964 /* SiteCell.m */; };
 		F6CE45E11EA3FB260056A964 /* odyssey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6CE45E01EA3FB260056A964 /* odyssey.jpg */; };
+		F6CE45E71EA416AC0056A964 /* CustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45E61EA416AC0056A964 /* CustomerInfo.m */; };
+		F6CE45EA1EA41C280056A964 /* LoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45E91EA41C280056A964 /* LoginInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +45,6 @@
 		F65B5DFA1E7B7F3800E0F83A /* car_intro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_intro.png; sourceTree = "<group>"; };
 		F65B5DFC1E7B9F1900E0F83A /* NewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewUserViewController.h; sourceTree = "<group>"; };
 		F65B5DFD1E7B9F1900E0F83A /* NewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewUserViewController.m; sourceTree = "<group>"; };
-		F65B5DFF1E7B9F4700E0F83A /* ReturnUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReturnUserViewController.h; sourceTree = "<group>"; };
-		F65B5E001E7B9F4700E0F83A /* ReturnUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReturnUserViewController.m; sourceTree = "<group>"; };
 		F65B5E021E7B9F9D00E0F83A /* CurrentRentalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentRentalViewController.h; sourceTree = "<group>"; };
 		F65B5E031E7B9F9D00E0F83A /* CurrentRentalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentRentalViewController.m; sourceTree = "<group>"; };
 		F65B5E051E7B9FA800E0F83A /* RentalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalsViewController.h; sourceTree = "<group>"; };
@@ -57,6 +56,10 @@
 		F6CE45D91EA3F0040056A964 /* SiteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteCell.h; sourceTree = "<group>"; };
 		F6CE45DA1EA3F0040056A964 /* SiteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteCell.m; sourceTree = "<group>"; };
 		F6CE45E01EA3FB260056A964 /* odyssey.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = odyssey.jpg; sourceTree = "<group>"; };
+		F6CE45E51EA416AC0056A964 /* CustomerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerInfo.h; sourceTree = "<group>"; };
+		F6CE45E61EA416AC0056A964 /* CustomerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfo.m; sourceTree = "<group>"; };
+		F6CE45E81EA41C280056A964 /* LoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.h; sourceTree = "<group>"; };
+		F6CE45E91EA41C280056A964 /* LoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,15 +99,6 @@
 				F65B5DFD1E7B9F1900E0F83A /* NewUserViewController.m */,
 			);
 			name = Registration;
-			sourceTree = "<group>";
-		};
-		F6139A551E8DF19D0009A0CF /* Registered User */ = {
-			isa = PBXGroup;
-			children = (
-				F65B5DFF1E7B9F4700E0F83A /* ReturnUserViewController.h */,
-				F65B5E001E7B9F4700E0F83A /* ReturnUserViewController.m */,
-			);
-			name = "Registered User";
 			sourceTree = "<group>";
 		};
 		F6139A561E8DF1BE0009A0CF /* Main */ = {
@@ -190,7 +184,6 @@
 			children = (
 				F6139A571E8DF1D10009A0CF /* Rental Screen */,
 				F6139A561E8DF1BE0009A0CF /* Main */,
-				F6139A551E8DF19D0009A0CF /* Registered User */,
 				F6139A531E8DF17A0009A0CF /* Registration */,
 			);
 			name = "View Controllers";
@@ -205,6 +198,10 @@
 				F6CE45D71EA3ED970056A964 /* CarInfo.m */,
 				F65B5DE21E7B7BD100E0F83A /* AppDelegate.h */,
 				F65B5DE31E7B7BD100E0F83A /* AppDelegate.m */,
+				F6CE45E51EA416AC0056A964 /* CustomerInfo.h */,
+				F6CE45E61EA416AC0056A964 /* CustomerInfo.m */,
+				F6CE45E81EA41C280056A964 /* LoginInfo.h */,
+				F6CE45E91EA41C280056A964 /* LoginInfo.m */,
 			);
 			name = "Special Classes";
 			sourceTree = "<group>";
@@ -302,7 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65B5E071E7B9FA800E0F83A /* RentalsViewController.m in Sources */,
+				F6CE45E71EA416AC0056A964 /* CustomerInfo.m in Sources */,
 				F6CE45D81EA3ED970056A964 /* CarInfo.m in Sources */,
+				F6CE45EA1EA41C280056A964 /* LoginInfo.m in Sources */,
 				F65B5E041E7B9F9D00E0F83A /* CurrentRentalViewController.m in Sources */,
 				F65B5DE71E7B7BD100E0F83A /* ViewController.m in Sources */,
 				F65B5E0A1E7B9FB800E0F83A /* NewRentalViewController.m in Sources */,
@@ -310,7 +309,6 @@
 				F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */,
 				F65B5DFE1E7B9F1900E0F83A /* NewUserViewController.m in Sources */,
 				F65B5DE11E7B7BD100E0F83A /* main.m in Sources */,
-				F65B5E011E7B9F4700E0F83A /* ReturnUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

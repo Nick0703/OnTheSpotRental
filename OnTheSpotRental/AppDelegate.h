@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CarInfo.h"
+#import "CustomerInfo.h"
+#import "LoginInfo.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
@@ -15,16 +17,24 @@
     NSString *databaseName;
     NSString *databasePath;
     NSMutableArray *cars;
+    NSMutableArray *customers;
+    NSMutableArray *logins;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *databaseName;
 @property (strong, nonatomic) NSString *databasePath;
 @property (strong, nonatomic) NSMutableArray *cars;
+@property (strong, nonatomic) NSMutableArray *customers;
+@property (strong, nonatomic) NSMutableArray *logins;
 
 - (void)checkAndCreateDatabase;
 - (void)readDataFromCarInfo;
-//- (BOOL)insertIntoDatase:(CarInfo *)car;
+- (void)readDataFromCustomerInfo;
+- (BOOL)readDataFromLoginInfo:(NSString *)username thePassword:(NSString *)password;
+- (BOOL)insertIntoCustomerInfo:(CustomerInfo *)customer;
+- (BOOL)insertIntoLoginInfo:(LoginInfo *)login;
+
 
 @end
 

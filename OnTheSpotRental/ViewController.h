@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    AppDelegate *mainDelegate;
+    IBOutlet UITextField *tfUsername;
+    IBOutlet UITextField *tfPassword;
+    NSString *customerID;
+}
 
-
+@property(nonatomic, strong) AppDelegate *mainDelegate;
+@property(nonatomic, strong) IBOutlet UITextField *tfUsername;
+@property(nonatomic, strong) IBOutlet UITextField *tfPassword;
+@property(nonatomic, strong) NSString *customerID;
 @end
 
