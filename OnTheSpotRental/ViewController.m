@@ -19,6 +19,11 @@
 - (IBAction)unwindToMainController:(UIStoryboardSegue *)sender {
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder]; // Hide the keyboard and return the control
+    return NO;
+}
+
 - (IBAction)goToRentals:(id)sender {
     if ((tfUsername.text && tfUsername.text.length > 0) && (tfPassword.text && tfPassword.text.length > 0)) {
         NSString *username = [tfUsername text];
@@ -35,6 +40,12 @@
             [alert addAction:ok];
             [self presentViewController:alert animated:YES completion:nil];
         }
+    } else {
+        NSString *msg = @"Please enter your username and password. Or register if you are a new user.";
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!" message:msg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

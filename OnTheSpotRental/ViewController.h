@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController<UITextViewDelegate> {
     AppDelegate *mainDelegate;
     IBOutlet UITextField *tfUsername;
     IBOutlet UITextField *tfPassword;

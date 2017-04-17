@@ -31,6 +31,7 @@
 - (void)checkAndCreateDatabase;
 - (void)readDataFromCarInfo;
 - (void)readDataFromCustomerInfo;
+- (NSString *)readDataFromCustomerInfoID:(NSString *)name thePhone:(NSString *)phone;
 - (BOOL)readDataFromLoginInfo:(NSString *)username thePassword:(NSString *)password;
 - (BOOL)insertIntoCustomerInfo:(CustomerInfo *)customer;
 - (BOOL)insertIntoLoginInfo:(LoginInfo *)login;

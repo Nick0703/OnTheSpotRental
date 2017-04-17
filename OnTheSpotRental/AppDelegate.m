@@ -117,6 +117,33 @@
     sqlite3_close(database);
 }
 
+- (NSString *)readDataFromCustomerInfoID:(NSString *)name thePhone:(NSString *)phone {
+    [self.logins removeAllObjects];
+    
+    sqlite3 *database;
+    BOOL returnCode = NO;
+    NSString *user_id;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        NSString *querySelect = [NSString stringWithFormat:@"select * from customerInfo where name='%@' and phone_no='%@';", name, phone];
+        const char *sqlStatement = [querySelect UTF8String];
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                char *ui = (char *)sqlite3_column_text(compiledStatement, 0);
+                
+                NSString *user_id = [NSString stringWithUTF8String:ui];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    return user_id;
+}
+
+
 // This is causing the app to crash....
 - (BOOL)insertIntoCustomerInfo:(CustomerInfo *)customer {
     sqlite3 *database;
@@ -238,9 +265,9 @@
     self.databasePath = [documentsDir stringByAppendingPathComponent:self.databaseName];
     
     [self checkAndCreateDatabase];
-    [self readDataFromCarInfo];
+    //[self readDataFromCarInfo];
     //[self readDataFromCustomerInfo];
-    [self readDataFromLoginInfo:@"username" thePassword:@"sheridan"];
+    //[self readDataFromLoginInfo:@"username" thePassword:@"sheridan"];
 
     return YES;
 }
