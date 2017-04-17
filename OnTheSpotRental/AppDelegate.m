@@ -138,7 +138,6 @@
                 
                 NSString *uid = [NSString stringWithUTF8String:ui];
                 user_id = [NSString stringWithString:uid];
-                NSLog(@"User ID IS %@", user_id);
             }
         }
         sqlite3_finalize(compiledStatement);
