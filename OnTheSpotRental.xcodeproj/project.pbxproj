@@ -28,6 +28,10 @@
 		F6CE45E11EA3FB260056A964 /* odyssey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6CE45E01EA3FB260056A964 /* odyssey.jpg */; };
 		F6CE45E71EA416AC0056A964 /* CustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45E61EA416AC0056A964 /* CustomerInfo.m */; };
 		F6CE45EA1EA41C280056A964 /* LoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45E91EA41C280056A964 /* LoginInfo.m */; };
+		F6FDB6FE1EA65CC40010C5B3 /* challenger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6FDB6FA1EA65CC40010C5B3 /* challenger.jpg */; };
+		F6FDB6FF1EA65CC40010C5B3 /* cruze.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6FDB6FB1EA65CC40010C5B3 /* cruze.jpg */; };
+		F6FDB7001EA65CC40010C5B3 /* genesis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6FDB6FC1EA65CC40010C5B3 /* genesis.jpg */; };
+		F6FDB7011EA65CC40010C5B3 /* mazda3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6FDB6FD1EA65CC40010C5B3 /* mazda3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +70,10 @@
 		F6CE45E61EA416AC0056A964 /* CustomerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfo.m; sourceTree = "<group>"; };
 		F6CE45E81EA41C280056A964 /* LoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.h; sourceTree = "<group>"; };
 		F6CE45E91EA41C280056A964 /* LoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfo.m; sourceTree = "<group>"; };
+		F6FDB6FA1EA65CC40010C5B3 /* challenger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = challenger.jpg; sourceTree = "<group>"; };
+		F6FDB6FB1EA65CC40010C5B3 /* cruze.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cruze.jpg; sourceTree = "<group>"; };
+		F6FDB6FC1EA65CC40010C5B3 /* genesis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = genesis.jpg; sourceTree = "<group>"; };
+		F6FDB6FD1EA65CC40010C5B3 /* mazda3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mazda3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +235,10 @@
 		F65B5DF91E7B7ED800E0F83A /* Raw */ = {
 			isa = PBXGroup;
 			children = (
+				F6FDB6FA1EA65CC40010C5B3 /* challenger.jpg */,
+				F6FDB6FB1EA65CC40010C5B3 /* cruze.jpg */,
+				F6FDB6FC1EA65CC40010C5B3 /* genesis.jpg */,
+				F6FDB6FD1EA65CC40010C5B3 /* mazda3.jpg */,
 				F6CE45E01EA3FB260056A964 /* odyssey.jpg */,
 				F65B5DFA1E7B7F3800E0F83A /* car_intro.png */,
 			);
@@ -305,7 +317,11 @@
 				F6CE45E11EA3FB260056A964 /* odyssey.jpg in Resources */,
 				F65B5DFB1E7B7F3800E0F83A /* car_intro.png in Resources */,
 				F65B5DEC1E7B7BD100E0F83A /* Assets.xcassets in Resources */,
+				F6FDB7011EA65CC40010C5B3 /* mazda3.jpg in Resources */,
+				F6FDB7001EA65CC40010C5B3 /* genesis.jpg in Resources */,
+				F6FDB6FE1EA65CC40010C5B3 /* challenger.jpg in Resources */,
 				F65B5DEA1E7B7BD100E0F83A /* Main.storyboard in Resources */,
+				F6FDB6FF1EA65CC40010C5B3 /* cruze.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

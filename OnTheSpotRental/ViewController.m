@@ -24,6 +24,8 @@
     return NO;
 }
 
+// Default login
+// lokesh:sheridan
 - (IBAction)goToRentals:(id)sender {
     if ((tfUsername.text && tfUsername.text.length > 0) && (tfPassword.text && tfPassword.text.length > 0)) {
         NSString *username = [tfUsername text];
