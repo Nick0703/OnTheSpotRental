@@ -2,8 +2,8 @@
 //  RentedInfo.h
 //  OnTheSpotRental
 //
-//  Created by Lokesh Chamane on 2017-04-17.
-//  Copyright © 2017 Lokesh Chamane. All rights reserved.
+//  Created by Vidur Prakash on 2017-04-17.
+//  Copyright © 2017 Vidur Prakash. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

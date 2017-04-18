@@ -2,8 +2,8 @@
 //  RentalsViewController.m
 //  OnTheSpotRental
 //
-//  Created by Lokesh Chamane on 2017-03-17.
-//  Copyright © 2017 Lokesh Chamane. All rights reserved.
+//  Created by Irshaad Nizrudin on 2017-03-17.
+//  Copyright © 2017 Irshaad Nizrudin. All rights reserved.
 //
 
 #import "RentalsViewController.h"
@@ -15,7 +15,6 @@
 @implementation RentalsViewController
 
 - (IBAction)unwindToRentalController:(UIStoryboardSegue *)sender {
-    
 }
 
 - (void)viewDidLoad {

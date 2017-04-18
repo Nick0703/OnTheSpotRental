@@ -258,6 +258,34 @@
 }
 
 // Read RentedInfo Table
+/*- (void)readDataFromRentedInfo:(NSString *)u carId:(NSString *)c {
+    [self.rents removeAllObjects];
+    
+    sqlite3 *database;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
+        NSString *querySelect = [NSString stringWithFormat:@"select * from rentedInfo where car_id='%@' and customer='%@';", u, c];
+        const char *sqlStatement = [querySelect UTF8String];
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                char *ci = (char *)sqlite3_column_text(compiledStatement, 3); // Car ID
+                char *ui = (char *)sqlite3_column_text(compiledStatement, 4); // Customer ID
+                
+                NSString *car_id = [NSString stringWithUTF8String:ci];
+                NSString *user_id = [NSString stringWithUTF8String:ui];
+                
+                UserRent *userRent = [[UserRent alloc] initWithData:car_id theCust:user_id];
+                
+                [self.rents addObject:userRent];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+}*/
+// Read RentedInfo Table
 - (void)readDataFromRentedInfo {
     [self.rents removeAllObjects];
     
@@ -269,19 +297,21 @@
         
         if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
             while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-                char *rd = (char *)sqlite3_column_text(compiledStatement, 1); // Rent duration
+                char *du = (char *)sqlite3_column_text(compiledStatement, 1); // Duration
                 char *tc = (char *)sqlite3_column_text(compiledStatement, 2); // Total Cost
                 char *ci = (char *)sqlite3_column_text(compiledStatement, 3); // Car ID
                 char *ui = (char *)sqlite3_column_text(compiledStatement, 4); // Customer ID
                 
-                NSString *rent_duration = [NSString stringWithUTF8String:rd];
-                NSString *total_cost = [NSString stringWithUTF8String:tc];
+                NSString *days = [NSString stringWithUTF8String:du];
+                NSString *totalCost = [NSString stringWithUTF8String:tc];
                 NSString *car_id = [NSString stringWithUTF8String:ci];
                 NSString *user_id = [NSString stringWithUTF8String:ui];
                 
-                RentedInfo *rentInfo = [[RentedInfo alloc] initWithData:total_cost carID:car_id custID:user_id rentDur:rent_duration];
+                RentedInfo *rent = [[RentedInfo alloc] initWithData:totalCost carID:car_id custID:user_id rentDur:days];
                 
-                [self.rents addObject:rentInfo];
+                //UserRent *userRent = [[UserRent alloc] initWithData:car_id theCust:user_id];
+                
+                [self.rents addObject:rent];
             }
         }
         sqlite3_finalize(compiledStatement);

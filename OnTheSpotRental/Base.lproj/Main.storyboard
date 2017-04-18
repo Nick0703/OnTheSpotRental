@@ -447,10 +447,10 @@
             </objects>
             <point key="canvasLocation" x="2557.5999999999999" y="903.59820089955031"/>
         </scene>
-        <!--View Controller-->
+        <!--Current Rental View Controller-->
         <scene sceneID="jSG-R7-tjD">
             <objects>
-                <viewController id="6gu-sq-5Ij" sceneMemberID="viewController">
+                <viewController id="6gu-sq-5Ij" customClass="CurrentRentalViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gcF-BP-tWm"/>
                         <viewControllerLayoutGuide type="bottom" id="mvh-8l-TqU"/>
@@ -476,10 +476,17 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6gu-sq-5Ij" id="x1d-3a-eQC"/>
+                                    <outlet property="delegate" destination="6gu-sq-5Ij" id="pt0-Ei-2gi"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tbView" destination="eIA-yD-B4d" id="2uc-yT-CFF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rk9-Qy-NpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0wg-hV-s07" userLabel="Exit" sceneMemberID="exit"/>

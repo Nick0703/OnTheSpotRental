@@ -68,21 +68,8 @@ txtPPUsername, txtPPPass, lblPPPass, lblPPUsername, txtName, txtStreet, txtCity,
         && (txtPostal.text && txtPostal.text.length > 0)
         && (txtPhoneNum.text && txtPhoneNum.text.length > 0)
         && (txtUsername.text && txtUsername.text.length > 0)) {
-        //&& (txtCardName.text && txtCardName.text.length > 0)
-        //&& (txtCardNum.text && txtCardNum.text.length > 0)
-        //&& (txtCardCVC.text && txtCardCVC.text.length > 0)
-        //&& (txtCardMM.text && txtCardMM.text.length > 0)
-        //&& (txtCardYY.text && txtCardYY.text.length > 0)) { // All the fields filled and avatar selected
         if ([password isEqualToString:password_conf]) {
             [self addUser]; // Add to Database
-            NSLog(@"Adding User");
-            /*UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Thank You!" message:@"Thank you for registering." preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-            
-            [alert addAction:ok];
-            [self presentViewController:alert animated:YES completion:nil];*/
-            
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             RentalsViewController *rentalVC = (RentalsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"1"];
             [self presentViewController:rentalVC animated:YES completion:nil];
