@@ -16,7 +16,7 @@
 @implementation AppDelegate
 
 #pragma mark Database Methods
-@synthesize databaseName, databasePath, cars, logins, customers;
+@synthesize databaseName, databasePath, cars, logins, customers, rents, client_id;
 
 #pragma mark Database Methods
 - (void)checkAndCreateDatabase {
@@ -52,14 +52,13 @@
                 char *mo = (char *)sqlite3_column_text(compiledStatement, 3); // model
                 char *mp = (char *)sqlite3_column_text(compiledStatement, 4); // mpg
                 char *co = (char *)sqlite3_column_text(compiledStatement, 5); // cost
-                
+
                 NSString *picture = [NSString stringWithUTF8String:pi];
                 NSString *make = [NSString stringWithUTF8String:ma];
                 NSString *model = [NSString stringWithUTF8String:mo];
                 NSString *mpg = [NSString stringWithUTF8String:mp];
                 NSString *cost = [NSString stringWithUTF8String:co];
 
-                
                 CarInfo *carInfo = [[CarInfo alloc] initWithData:picture theMake:make theModel:model theMpg:mpg theCost:cost];
                 [self.cars addObject:carInfo];
             }
@@ -146,8 +145,6 @@
     return user_id;
 }
 
-
-// This is causing the app to crash....
 // Insert into CustomerInfo Table
 - (BOOL)insertIntoCustomerInfo:(CustomerInfo *)customer {
     sqlite3 *database;
@@ -248,12 +245,80 @@
                 NSString *password = [NSString stringWithUTF8String:pp];
                 NSString *user_id = [NSString stringWithUTF8String:ui];
                 
+                client_id = [NSString stringWithString:user_id];
+                NSLog(@"Client ID IS %@", client_id);
                 LoginInfo *loginInfo = [[LoginInfo alloc] initWithData:username thePassword:password theCustomer:user_id];
                 [self.logins addObject:loginInfo];
             }
         }
         sqlite3_finalize(compiledStatement);
     }
+    sqlite3_close(database);
+    return returnCode;
+}
+
+// Read RentedInfo Table
+- (void)readDataFromRentedInfo {
+    [self.rents removeAllObjects];
+    
+    sqlite3 *database;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK) {
+        char *sqlStatement = "select * from rentedInfo;";
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                char *rd = (char *)sqlite3_column_text(compiledStatement, 1); // Rent duration
+                char *tc = (char *)sqlite3_column_text(compiledStatement, 2); // Total Cost
+                char *ci = (char *)sqlite3_column_text(compiledStatement, 3); // Car ID
+                char *ui = (char *)sqlite3_column_text(compiledStatement, 4); // Customer ID
+                
+                NSString *rent_duration = [NSString stringWithUTF8String:rd];
+                NSString *total_cost = [NSString stringWithUTF8String:tc];
+                NSString *car_id = [NSString stringWithUTF8String:ci];
+                NSString *user_id = [NSString stringWithUTF8String:ui];
+                
+                RentedInfo *rentInfo = [[RentedInfo alloc] initWithData:total_cost carID:car_id custID:user_id rentDur:rent_duration];
+                
+                [self.rents addObject:rentInfo];
+            }
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+}
+
+// Insert into RentedInfo Table
+- (BOOL)insertIntoRentedInfo:(RentedInfo *)rent {
+    sqlite3 *database;
+    BOOL returnCode = YES;
+    
+    if(sqlite3_open([self.databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        char *sqlStatement = "insert into rentedInfo values(NULL, ?, ?, ?, ?);";
+        sqlite3_stmt *compiledStatement;
+        
+        if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
+        {
+            sqlite3_bind_text(compiledStatement, 1, [rent.rent_Duration UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 2, [rent.tota_Cost UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 3, [rent.car_Id UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(compiledStatement, 4, [rent.customer_Id UTF8String], -1, SQLITE_TRANSIENT);
+        }
+        
+        if(sqlite3_step(compiledStatement) != SQLITE_DONE)
+        {
+            NSLog(@"Error: %s", sqlite3_errmsg(database));
+            returnCode = NO;
+        }
+        else
+        {
+            NSLog(@"Insert into row id = %lld", sqlite3_last_insert_rowid(database));
+        }
+        sqlite3_finalize(compiledStatement);
+    }
+    
     sqlite3_close(database);
     return returnCode;
 }
@@ -271,10 +336,6 @@
     self.databasePath = [documentsDir stringByAppendingPathComponent:self.databaseName];
     
     [self checkAndCreateDatabase];
-    //[self readDataFromCarInfo];
-    //[self readDataFromCustomerInfo];
-    //[self readDataFromLoginInfo:@"username" thePassword:@"sheridan"];
-
     return YES;
 }
 

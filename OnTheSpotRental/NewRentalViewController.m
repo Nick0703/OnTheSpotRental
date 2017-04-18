@@ -7,6 +7,7 @@
 //
 
 #import "NewRentalViewController.h"
+#import "CarDetailViewController.h"
 #import "SiteCell.h"
 
 @interface NewRentalViewController ()
@@ -50,17 +51,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
+    NSInteger cID = row + 1;
     
     CarInfo *carInfo = [mainDelegate.cars objectAtIndex:row];
     
+    NSLog(@"ROW %ld", (long)cID);
+    NSString *picture = carInfo.picture;
+    NSLog(@"%@", picture);
     NSString *make = carInfo.make;
-    NSString *msg = [NSString stringWithFormat:@"Model: %@\n Miles per gallon: %@\n"
-                     @"Cost per day: %@\n", carInfo.model, carInfo.mpg, carInfo.cost];
+    NSString *model = carInfo.model;
+    NSString *mpg = carInfo.mpg;
+    NSString *cost = carInfo.cost;
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:make message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CarDetailViewController *carVC = (CarDetailViewController *)[storyboard instantiateViewControllerWithIdentifier:@"2"];
+    carVC.picture = picture;
+    carVC.make = make;
+    carVC.model = model;
+    carVC.cost = cost;
+    carVC.mpg = mpg;
+    carVC.user_ID = mainDelegate.client_id;
+    carVC.car_ID = [@(cID) stringValue];;
+    
+    [self presentViewController:carVC animated:YES completion:nil];
 }
 
 #pragma mark App methods

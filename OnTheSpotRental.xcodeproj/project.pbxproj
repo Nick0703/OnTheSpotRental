@@ -21,6 +21,7 @@
 		F65B5E041E7B9F9D00E0F83A /* CurrentRentalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5E031E7B9F9D00E0F83A /* CurrentRentalViewController.m */; };
 		F65B5E071E7B9FA800E0F83A /* RentalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5E061E7B9FA800E0F83A /* RentalsViewController.m */; };
 		F65B5E0A1E7B9FB800E0F83A /* NewRentalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65B5E091E7B9FB800E0F83A /* NewRentalViewController.m */; };
+		F69A9A4B1EA59FA70086A823 /* RentedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69A9A4A1EA59FA70086A823 /* RentedInfo.m */; };
 		F69EE1441EA4774500E7275C /* CarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69EE1431EA4774500E7275C /* CarDetailViewController.m */; };
 		F6CE45D81EA3ED970056A964 /* CarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45D71EA3ED970056A964 /* CarInfo.m */; };
 		F6CE45DB1EA3F0040056A964 /* SiteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CE45DA1EA3F0040056A964 /* SiteCell.m */; };
@@ -52,6 +53,8 @@
 		F65B5E061E7B9FA800E0F83A /* RentalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalsViewController.m; sourceTree = "<group>"; };
 		F65B5E081E7B9FB800E0F83A /* NewRentalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRentalViewController.h; sourceTree = "<group>"; };
 		F65B5E091E7B9FB800E0F83A /* NewRentalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRentalViewController.m; sourceTree = "<group>"; };
+		F69A9A491EA59FA70086A823 /* RentedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentedInfo.h; sourceTree = "<group>"; };
+		F69A9A4A1EA59FA70086A823 /* RentedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentedInfo.m; sourceTree = "<group>"; };
 		F69EE1421EA4774500E7275C /* CarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailViewController.h; sourceTree = "<group>"; };
 		F69EE1431EA4774500E7275C /* CarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailViewController.m; sourceTree = "<group>"; };
 		F6CE45D61EA3ED970056A964 /* CarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfo.h; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				F6CE45E61EA416AC0056A964 /* CustomerInfo.m */,
 				F6CE45E81EA41C280056A964 /* LoginInfo.h */,
 				F6CE45E91EA41C280056A964 /* LoginInfo.m */,
+				F69A9A491EA59FA70086A823 /* RentedInfo.h */,
+				F69A9A4A1EA59FA70086A823 /* RentedInfo.m */,
 			);
 			name = "Special Classes";
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				F6CE45DB1EA3F0040056A964 /* SiteCell.m in Sources */,
 				F65B5DE41E7B7BD100E0F83A /* AppDelegate.m in Sources */,
 				F65B5DFE1E7B9F1900E0F83A /* NewUserViewController.m in Sources */,
+				F69A9A4B1EA59FA70086A823 /* RentedInfo.m in Sources */,
 				F65B5DE11E7B7BD100E0F83A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

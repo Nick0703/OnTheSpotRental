@@ -67,7 +67,7 @@
     }
     else
     {
-        frame = CGRectMake(5, 5, 40, 40);
+        frame = CGRectMake(5, 5, 60, 50);
         myImageView.frame = frame;
     
         frame = CGRectMake(110, 5, 260, 20);
